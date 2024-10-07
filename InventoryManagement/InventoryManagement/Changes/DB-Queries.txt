@@ -1,0 +1,15 @@
+﻿-------- Date: 07/10/2024 --------
+
+CREATE TABLE Product(
+	ID INT PRIMARY KEY IDENTITY(1,1),
+	Name VARCHAR(50),
+	Quantity BIGINT,
+	Price BIGINT,
+	AddDateTime DATETIME DEFAULT GETDATE(),
+	AddedBy BIGINT,
+	UpdateDateTime DATETIME,
+	UpdatedBy BIGINT,
+	IsActive BIT DEFAULT 1
+);
+
+INSERT INTO Product(Name, Quantity, Price) VALUES ('400 Days', 10, 249);
