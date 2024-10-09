@@ -1,0 +1,30 @@
+﻿@using Application.Entity.Model
+
+@{
+	long TotalPrice = 0; 
+}
+
+@model List<Product>
+
+<table class="table">
+		<tr>
+			<th>Product ID</th>
+			<th>Product Name</th>
+			<th>Product Quantity</th>
+			<th>Product Price</th>
+			<th>Product Total Price</th>
+		</tr>
+
+	@foreach(var Products in Model)
+	{
+		<tr>
+			<td>@Products.Id</td>
+			<td>@Products.Name</td>
+			<td>@Products.Quantity</td>
+			<td>@Products.Price</td>
+			@TotalPrice = @Products.Price * @Products.Quantity;
+			<td>@TotalPrice</td>
+		</tr>
+	}
+	<h3>@TotalPrice</h3>
+</table>

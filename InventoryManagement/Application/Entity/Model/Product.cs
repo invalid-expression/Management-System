@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -9,23 +10,27 @@ namespace Application.Entity.Model
 {
     public class Product
     {
+        [Key]
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        [Required]
+        public string? Name { get; set; }
 
-        public long Quantity {  get; set; }
+        [Required]
+        public long? Quantity {  get; set; }
 
-        public long Price { get; set; }
+        [Required]
+        public long? Price { get; set; }
         
-        public DateTime AddedDate { get; set; }
+        public DateTime? AddDateTime { get; set; }
 
-        public long AddedBy { get; set; }
+        public long? AddedBy { get; set; }
 
-        public DateTime UpdateDateTime { get; set; }
+        public DateTime? UpdateDateTime { get; set; }
 
-        public long UpdatedBy { get; set; }
+        public long? UpdatedBy { get; set; }
 
-        public bool IsActive { get; set; } 
+        public bool? IsActive { get; set; } 
 
     }
 }

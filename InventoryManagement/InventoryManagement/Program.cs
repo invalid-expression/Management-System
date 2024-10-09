@@ -1,9 +1,20 @@
+using Application.Interface;
+using Infrastructure.Context;
+using Infrastructure.Service;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
-var Config = builder.Configuration.
+
+var provider = builder.Services.BuildServiceProvider();
+var config = provider.GetRequiredService<IConfiguration>();
+//var ConnectionString = builder.Configuration.GetConnectionString("DbConnect") ?? throw new InvalidOperationException("Connection String Not Found");
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<ApplicationContext>(options =>
+    options.UseSqlServer(config.GetConnectionString("DbConnect")));
 
+builder.Services.AddScoped<IProduct, IProductService>();
 
 var app = builder.Build();
 
