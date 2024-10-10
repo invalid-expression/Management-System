@@ -11,5 +11,6 @@ namespace Application.Interface
     {
         public void AddProduct(Product product);
         public Task<IEnumerable<Product>> GetProduct();
+        public Task<Product> Edit(int ID);
     }
 }

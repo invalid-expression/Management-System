@@ -31,5 +31,15 @@ namespace Infrastructure.Service
             var Products = await _applicationContext.Product.ToListAsync();
             return Products;
         }
+
+        public async Task<Product> Edit(int ID)
+        {
+            var Products = await _applicationContext.Product.FirstOrDefaultAsync(x => x.Id == ID);
+            return Products;
+        }
+
+        
+
+
     }
 }

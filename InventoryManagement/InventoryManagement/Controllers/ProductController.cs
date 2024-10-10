@@ -32,5 +32,11 @@ namespace InventoryManagement.Controllers
             _iproduct.AddProduct(product);
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> Edit(int ID)
+        {
+            var ProductData = await _iproduct.Edit(ID); 
+            return View("Update/Edit", ProductData);      
+        }
     }
 }
