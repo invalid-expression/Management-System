@@ -17,11 +17,16 @@ namespace InventoryManagement.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var Product = await _iproduct.GetProduct();
-            return View(Product);
+            try
+            {
+                var Product = await _iproduct.GetProduct();
+                return View(Product);
+            }
+            catch (Exception ex) { return Ok(ex.Message); }
+            
         }
 
-        public IActionResult AddProduct()
+        public IActionResult AddProduct()               
         {
             return View("Add/AddProduct");
         }
@@ -29,14 +34,34 @@ namespace InventoryManagement.Controllers
         [HttpPost]
         public IActionResult AddProduct(Product product)
         {
-            _iproduct.AddProduct(product);
-            return RedirectToAction("Index");
+            try
+            {
+                _iproduct.AddProduct(product);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex) { return Ok(ex.Message); }
         }
 
         public async Task<IActionResult> Edit(int ID)
         {
-            var ProductData = await _iproduct.Edit(ID); 
-            return View("Update/Edit", ProductData);      
+            try
+            {
+                var ProductData = await _iproduct.Edit(ID);
+                return View("Update/Edit", ProductData);
+            }
+            catch (Exception ex) { return Ok(ex.Message); }
         }
+
+        [HttpPost]
+        public IActionResult Update(Product product)
+        {
+            try
+            {
+                _iproduct.Update(product);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex) { return Ok(ex.Message); }
+            
+        } 
     }
 }

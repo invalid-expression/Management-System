@@ -15,6 +15,7 @@ builder.Services.AddDbContext<ApplicationContext>(options =>
     options.UseSqlServer(config.GetConnectionString("DbConnect")));
 
 builder.Services.AddScoped<IProduct, IProductService>();
+builder.Services.AddScoped<IUsers, IUserService>();
 
 var app = builder.Build();
 

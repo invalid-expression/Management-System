@@ -22,8 +22,8 @@ namespace Infrastructure.Service
 
         public void AddProduct(Product product)
         {
-            _applicationContext.Product.Add(product);
-            _applicationContext.SaveChanges();
+                _applicationContext.Product.Add(product);
+                _applicationContext.SaveChanges();
         }
 
         public async Task<IEnumerable<Product>> GetProduct()
@@ -32,14 +32,17 @@ namespace Infrastructure.Service
             return Products;
         }
 
-        public async Task<Product> Edit(int ID)
+        public async Task<dynamic> Edit(int ID)
         {
             var Products = await _applicationContext.Product.FirstOrDefaultAsync(x => x.Id == ID);
             return Products;
         }
 
-        
-
-
+        public dynamic Update(Product product)
+        {
+            var Data =  _applicationContext.Product.Update(product);
+                       _applicationContext.SaveChanges();
+            return Data;
+        }
     }
 }
