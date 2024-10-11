@@ -4,7 +4,8 @@
 <body>
 	<form asp-controller="Users" asp-action="GetUser">
 		<label asp-for="Id"></label>
-		<input type="number" asp-for="Id" />
-		<button>Submit</button>
+		<input type="number" asp-for="Id" class="input-group"/>
+		<input type="hidden" asp-for="CreatedAt" />
+		<button class="btn btn-primary">Submit</button>
 	</form>
 </body>

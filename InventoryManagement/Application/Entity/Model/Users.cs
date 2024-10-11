@@ -16,6 +16,6 @@ namespace Application.Entity.Model
 
         public string? Email { get; set; }
 
-        public DateTime? CreatedAt { get; set; }
+        public DateTime? CreatedAt { get; set; } = DateTime.Now;
     }
 }

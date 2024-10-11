@@ -41,8 +41,13 @@ namespace InventoryManagement.Controllers
 		[HttpPost]
         public async Task<IActionResult> GetUser(int id)
         {
-            var Data = await _users.GetUserByID(id);
-            return View("Index", Data);
+            try 
+            {
+				var Data = await _users.GetUserByID(id);
+				return View("Index", Data);
+			}
+            catch{ return Ok("Something error occupied"); }
+            
         }
 
     }

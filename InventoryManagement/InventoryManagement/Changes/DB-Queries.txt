@@ -13,3 +13,17 @@ CREATE TABLE Product(
 );
 
 INSERT INTO Product(Name, Quantity, Price) VALUES ('400 Days', 10, 249);
+
+``-------- Date: 11/10/2024 --------
+
+CREATE TABLE Users
+(
+	ID INT PRIMARY KEY IDENTITY(1,1),
+	Username VARCHAR(50),
+	Email VARCHAR(50),
+	CreatedAt DATETIME DEFAULT GETDATE()
+);
+
+UPDATE Users
+SET CreatedAt = GETDATE()
+WHERE CreatedAt IS NULL;
