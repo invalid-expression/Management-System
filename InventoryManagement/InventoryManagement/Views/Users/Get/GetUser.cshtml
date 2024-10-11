@@ -1,0 +1,10 @@
+﻿@using Application.Entity.Model
+@model Users
+
+<body>
+	<form asp-controller="Users" asp-action="GetUser">
+		<label asp-for="Id"></label>
+		<input type="number" asp-for="Id" />
+		<button>Submit</button>
+	</form>
+</body>

@@ -10,5 +10,6 @@ namespace Application.Interface
     public interface IUsers
     {
         public Task<Users> CreateUser(Users users);
+        public Task<IEnumerable<Users>> GetUserByID(int ID);
     }
 }

@@ -33,4 +33,17 @@ namespace InventoryManagement.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+		public IActionResult GetUser()
+		{
+			return View("Get/GetUser");
+		}
+
+		[HttpPost]
+        public async Task<IActionResult> GetUser(int id)
+        {
+            var Data = await _users.GetUserByID(id);
+            return View("Index", Data);
+        }
+
+    }
 }

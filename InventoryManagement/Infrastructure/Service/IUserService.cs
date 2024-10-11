@@ -23,5 +23,11 @@ namespace Infrastructure.Service
                        await _applicationContext.SaveChangesAsync();
             return User.Entity;
         }
+
+        public async Task<IEnumerable<Users>> GetUserByID(int ID)
+        {
+            var UserData = await _applicationContext.Users.Where(x => x.Id == ID).ToListAsync();
+            return UserData;
+        }
     }
 }
