@@ -1,10 +1,37 @@
 ﻿@using Application.Entity.Model
 @model List<Users>
 
+@if(Model.Count == 0)
+{
+	<span class="badge bg-danger">IF YOU'RE SEEING BLANK WHITE PAGE IT MEAN ENTERED USER ID DOESNT EXIST'</span>
+}
+
 @foreach(var Data in Model)
 {
-	<h3>@Data.Id @Data.Username</h3>
-	<h3>@Data.Email</h3>
-	<h3>@Data.CreatedAt</h3>
+	<table class="table">
+		<tr>
+			<th>ID: </th>
+			<td>@Data.Id</td>
+		</tr>
+
+		<tr>
+			<th>USERNAME: </th>
+			<td>@Data.Username</td>
+		</tr>
+
+		<tr>
+			<th>EMAIL: </th>
+			<td>@Data.Email</td>
+		</tr>
+
+		<tr>
+			<th>CREATED AT: </th>
+			<td>@Data.CreatedAt</td>
+		</tr>
+	</table>
+
+	<a href="/Users/GetUser" class="btn btn-primary">GO TO BACK</a>
+
+	
 
 }

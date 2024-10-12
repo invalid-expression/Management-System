@@ -15,7 +15,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h2>Create Account</h2>
+            <h2>Add New Product</h2>
         </div>
         <form asp-controller="Product" asp-action="AddProduct" class="form">
             <div class="form-control">
@@ -28,20 +28,21 @@
 
             <div class="form-control">
                 <label asp-for="Quantity">Quantity</label>
-                <input type="number" placeholder="Product Quantity" asp-for="Quantity" />
+                <input type="number" placeholder="Product Quantity" asp-for="Quantity" required/>
                 <i class="fas fa-check-circle"></i>
                 <i class="fas fa-exclamation-circle"></i>
                 <span asp-validation-for="Quantity"></span>
             </div>
             <div class="form-control">
                 <label asp-for="Price">Price</label>
-                <input type="Price" placeholder="Price" asp-for="Price" />
+                <input type="number" placeholder="Price" asp-for="Price" required />
                 <i class="fas fa-check-circle"></i>
                 <i class="fas fa-exclamation-circle"></i>
                 <span asp-validation-for="Price"></span>
             </div>
 
             <button>Submit</button>
+            <a href="/Home/Index">BACK</a>
         </form>
     </div>
 </body>

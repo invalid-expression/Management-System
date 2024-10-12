@@ -1,6 +1,7 @@
 ﻿using Application.Entity.Model;
 using Application.Interface;
 using Infrastructure.Context;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -18,10 +19,10 @@ namespace Infrastructure.Service
             _applicationContext = applicationContext;
         }
         public async Task<Users> CreateUser(Users users)
-        { 
-            var User = await _applicationContext.Users.AddAsync(users);
-                       await _applicationContext.SaveChangesAsync();
-            return User.Entity;
+        {  
+             var User = await _applicationContext.Users.AddAsync(users);
+             await _applicationContext.SaveChangesAsync();
+             return User.Entity;  
         }
 
         public async Task<IEnumerable<Users>> GetUserByID(int ID)

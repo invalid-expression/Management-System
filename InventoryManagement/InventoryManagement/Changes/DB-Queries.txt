@@ -27,3 +27,7 @@ CREATE TABLE Users
 UPDATE Users
 SET CreatedAt = GETDATE()
 WHERE CreatedAt IS NULL;
+
+UPDATE Product
+SET AddDateTime = GETDATE()
+WHERE AddDateTime IS NULL;

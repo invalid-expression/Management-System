@@ -1,6 +1,7 @@
 using Application.Interface;
 using Infrastructure.Context;
 using Infrastructure.Service;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,9 @@ var config = provider.GetRequiredService<IConfiguration>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationContext>(options =>
     options.UseSqlServer(config.GetConnectionString("DbConnect")));
+
+builder.Services.AddEndpointsApiExplorer();
+
 
 builder.Services.AddScoped<IProduct, IProductService>();
 builder.Services.AddScoped<IUsers, IUserService>();

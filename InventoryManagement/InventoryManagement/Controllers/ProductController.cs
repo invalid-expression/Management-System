@@ -36,8 +36,12 @@ namespace InventoryManagement.Controllers
         {
             try
             {
-                _iproduct.AddProduct(product);
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    _iproduct.AddProduct(product);
+                    return RedirectToAction("Index");
+                }
+                return View();
             }
             catch (Exception ex) { return Ok(ex.Message); }
         }
@@ -57,8 +61,12 @@ namespace InventoryManagement.Controllers
         {
             try
             {
-                _iproduct.Update(product);
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    _iproduct.Update(product);
+                    return RedirectToAction("Index");
+                }
+                return View();
             }
             catch (Exception ex) { return Ok(ex.Message); }
             
