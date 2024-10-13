@@ -21,25 +21,40 @@ namespace Infrastructure.Service
             _applicationContext = applicationContext;
         }
 
-        public void AddProduct(Product product)
+		/*****************************************
+            TO ADD THE PRODUCT IN TABLE
+        *****************************************/
+		public void AddProduct(Product product)
         {
                 _applicationContext.Product.Add(product);
                 _applicationContext.SaveChanges();
         }
 
-        public async Task<IEnumerable<Product>> GetProduct()
+
+		/*****************************************
+            TO VIEW THE PRODUCT IN VIEW PAGE
+        *****************************************/
+		public async Task<IEnumerable<Product>> GetProduct()
         {
             var Products = await _applicationContext.Product.ToListAsync();
             return Products;
         }
 
-        public async Task<dynamic> Edit(int ID)
+
+		/********************************************************
+            TO ADD THE DATA IN FORM OF VIEW PAGE TO DO CHANGES
+        *********************************************************/
+		public async Task<dynamic> Edit(int ID)
         {
             var Products = await _applicationContext.Product.FirstOrDefaultAsync(x => x.Id == ID);
             return Products;
         }
 
-        public dynamic Update(Product product)
+
+		/********************************************************
+            TO UPDATE THE EXISTING DATA
+        *********************************************************/
+		public dynamic Update(Product product)
         {
             var Data =  _applicationContext.Product.Update(product);
                        _applicationContext.SaveChanges();

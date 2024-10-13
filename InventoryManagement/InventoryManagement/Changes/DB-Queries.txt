@@ -1,4 +1,6 @@
-﻿``-------- Date: 07/10/2024 --------
+﻿****************************************
+``-------- Date: 07/10/2024 --------
+****************************************
 
 CREATE TABLE Product(
 	ID INT PRIMARY KEY IDENTITY(1,1),
@@ -14,14 +16,16 @@ CREATE TABLE Product(
 
 INSERT INTO Product(Name, Quantity, Price) VALUES ('400 Days', 10, 249);
 
+****************************************
 ``-------- Date: 11/10/2024 --------
+****************************************
 
 CREATE TABLE Users
 (
 	ID INT PRIMARY KEY IDENTITY(1,1),
 	Username VARCHAR(50),
 	Email VARCHAR(50),
-	CreatedAt DATETIME DEFAULT GETDATE()
+	CreatedAt DATETIME
 );
 
 UPDATE Users
@@ -31,3 +35,22 @@ WHERE CreatedAt IS NULL;
 UPDATE Product
 SET AddDateTime = GETDATE()
 WHERE AddDateTime IS NULL;
+
+****************************************
+``-------- Date: 13/10/2024 --------
+****************************************
+
+CREATE TABLE Orders(
+	ID INT PRIMARY KEY IDENTITY(1, 1),
+	UserID INT FOREIGN KEY REFERENCES Users(ID),
+	TotalPrice DECIMAL(10, 2),
+	CreatedAt DATETIME DEFAULT GETDATE()
+);
+
+CREATE TABLE OrderItems(
+	ID INT PRIMARY KEY IDENTITY(1,1),
+	OrderID INT FOREIGN KEY REFERENCES Orders(ID),
+	ProductID INT FOREIGN KEY REFERENCES Product(ID),
+	Quantity INT,
+	Price DECIMAL (10,2)
+);
