@@ -1,0 +1,19 @@
+﻿@using Application.Entity.Model
+@model List<Posts>
+
+<table class="table">
+	<tr>
+		<th>PostID</th>
+		<th>Author</th>
+		<th>Content</th>
+	</tr>
+
+	@foreach(var Data in Model)
+	{
+		<tr>
+			<td>@Data.Id</td>
+			<td>@Data.AuthorID</td>
+			<td>@Data.Content</td>
+		</tr>
+	}
+</table>

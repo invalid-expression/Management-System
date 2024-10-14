@@ -16,5 +16,7 @@ namespace Infrastructure.Context
         }
         public DbSet<Product> Product { get; set; }
         public DbSet<Users> Users { get; set; }
+        public DbSet<Posts> Posts { get; set; }
+        public DbSet<Comment> Comment { get; set; }
     }
 }
